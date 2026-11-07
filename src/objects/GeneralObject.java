@@ -32,6 +32,7 @@ public abstract class GeneralObject implements ImageTile {
         return position;
 
     }
+
     @Override
     public int getLayer() {
         return 0;

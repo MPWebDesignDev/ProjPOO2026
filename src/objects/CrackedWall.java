@@ -3,28 +3,14 @@ package objects;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
-public class CrackedWall extends Baba{
-    @Override
-    public String getName() {
-        return super.getName();
+public class CrackedWall extends GeneralObject{
+    public CrackedWall(String name, Point2D position) {
+        super(name, position);
     }
 
     @Override
-    public Point2D getPosition() {
-        return super.getPosition();
+    public void move(Direction direction) {
+        //Empty as the CrackedWall is a static object
     }
 
-    @Override
-    public int getLayer() {
-        return super.getLayer();
-    }
-
-    @Override
-    public void move(Direction d) {
-        //Its is static so move does nothing
-    }
-
-    public CrackedWall(Point2D position) {
-        super(position);
-    }
 }

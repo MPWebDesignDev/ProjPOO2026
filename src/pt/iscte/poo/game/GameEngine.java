@@ -4,10 +4,14 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import objects.Baba;
+import objects.GeneralObject;
+import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
+import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
 import pt.iscte.poo.utils.Direction;
+import pt.iscte.poo.utils.Point2D;
 
 public class GameEngine implements Observer {
 
@@ -16,6 +20,7 @@ public class GameEngine implements Observer {
 
     private Room currentRoom;
     private int lastTickProcessed = 0;
+
 
     private GameEngine() {
         currentRoom = Room.readRoom(new File(ROOMS_DIRECTORY + "/room0.txt"));
@@ -61,5 +66,17 @@ public class GameEngine implements Observer {
         return currentRoom.getPlayer();
     }
 
+
+    public boolean isInstranposible(Direction direction){
+        Point2D nextPosition = getPlayer().getPosition().plus(direction.asVector()); //Coordenada destino
+
+        for(ImageTile obj : currentRoom.getObjects()){
+            if(obj instanceof Wall){ //Se o objeto for uma parede
+                return false; // Bloqueia se houver uma parede na posição de destino
+            }
+        }
+
+        return true;
+    }
 
 }

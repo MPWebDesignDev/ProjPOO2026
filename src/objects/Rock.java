@@ -9,33 +9,10 @@ public class Rock extends GeneralObject{
     }
 
     @Override
-    public Point2D getPoint2D() {
-        return super.getPoint2D();
-    }
-
-    @Override
-    public void setPosition(Point2D position) {
-        super.setPosition(position);
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    public Point2D getPosition() {
-        return super.getPosition();
-    }
-
-    @Override
-    public int getLayer() {
-        return super.getLayer();
-    }
-
-    @Override
     public void move(Direction direction) {
-
+        Point2D currentPosition = getPosition(); //Gets current position of the rock
+        Point2D newPosition = currentPosition.plus(direction.asVector()); //Gets (up, down, left ou, right)
+        setPosition(newPosition); //Sets new position of the rock
     }
 
 
