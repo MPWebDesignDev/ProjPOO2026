@@ -1,5 +1,7 @@
 # ProjPOO2026
 
+Developed by Diana Beato & Miguel Pereira
+
 
 Log 1 - 11/07/2026 : 
 -------------------------------------
