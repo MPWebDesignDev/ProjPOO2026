@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import objects.*;
+import objects.Box;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
@@ -136,16 +137,27 @@ public class Room {
                             Bomb bomb = new Bomb(objName, positon);
                             tile = bomb;
                         case "box":
-                            Box box = new Box(objName,positon);
+                            Box box = new Box(objName, positon);
                             tile = box;
                         case "flag":
                             Flag flag = new Flag(objName, positon);
                             tile = flag;
+                            break;
                         case "wordBox":
+                            WordBox wordBox = new WordBox(objName,positon);
+                            tile = wordBox;
                         case "wordIs":
+                            WordIs wordIs = new WordIs(objName,positon);
+                            tile = wordIs;
                         case "wordWin":
+                            WordWin wordWin = new WordWin(objName,positon);
+                            tile = wordWin;
                         case "wordMove":
+                            WordMove wordMove = new WordMove(objName,positon);
+                            tile = wordMove;
                         case "wordStop":
+                            WordStop wordStop = new WordStop(objName,positon);
+                            tile = wordStop;
 
                         default:
                             break;  // If the object name doesn't match any known case it does nothing
