@@ -30,4 +30,7 @@ To do:
 2.Mave hole have box over it 
 
 3.Make flag indicate finish
+
 -------------------------------------
+
+Log 2 -       :
