@@ -17,7 +17,7 @@ To do:
 2. Finish the Start 7 switch in Room.java (COMPLETED)
 -------------------------------------
 
-Log 2 - 11~/11/2026 :       :
+Log 2 - 11/11/2026 :       :
 -------------------------------------
 1. Finished Baba's move feature as well as the Wall Physics so Baba doesn't pass through the wall
 2. Fully updated GameEngine
