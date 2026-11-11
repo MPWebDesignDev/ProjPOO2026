@@ -13,11 +13,18 @@ General changes including:
 
 To do:
 
-1. Understand why Box is wrong
-2. Finish the Start 7 switch in Room.java
+1. Understand why Box is wrong (COMPLETED)
+2. Finish the Start 7 switch in Room.java (COMPLETED)
 -------------------------------------
 
-Log 2 -        :
+Log 2 - 11~/11/2026 :       :
 -------------------------------------
+1. Finished Baba's move feature as well as the Wall Physics so Baba doesn't pass through the wall
+2. Fully updated GameEngine
+3. Fully improved and finished Room generation so everything functiones as planned
 
+To do:
+1.Make boxes movable
+2.Mave hole have box over it 
+3.Make flag indicate finish
 -------------------------------------
