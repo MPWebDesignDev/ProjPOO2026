@@ -121,59 +121,54 @@ public class Room {
                     int yPosition = Integer.parseInt(spacer[2]);
                     Point2D positon = new Point2D(xPosition,yPosition); //Tells the engine what exact location the object should be in on the map
 
-                    ImageTile tile = null;
-
                    //Start 7: objName chacker to see what Java Class should be initialized and placed
                     switch (objName.toLowerCase()){
                         case "baba":
                             Baba baba = new Baba(positon);
                             r.player = baba;
-                            tile=baba;
+                            r.addObject(baba);
                             break;
                         case "rock":
                             Rock rock = new Rock(objName,positon);
-                            tile = rock;
+                            r.addObject(rock);
                             break;
                         case "bomb":
                             Bomb bomb = new Bomb(objName, positon);
-                            tile = bomb;
+                            r.addObject(bomb);
                             break;
                         case "box":
                             Box box = new Box(objName, positon);
-                            tile = box;
+                            r.addObject(box);
                             break;
                         case "flag":
                             Flag flag = new Flag(objName, positon);
-                            tile = flag;
+                            r.addObject(flag);
                             break;
                         case "wordBox":
                             WordBox wordBox = new WordBox(objName,positon);
-                            tile = wordBox;
+                            r.addObject(wordBox);
                             break;
                         case "wordIs":
                             WordIs wordIs = new WordIs(objName,positon);
-                            tile = wordIs;
+                            r.addObject(wordIs);
                             break;
                         case "wordWin":
                             WordWin wordWin = new WordWin(objName,positon);
-                            tile = wordWin;
+                            r.addObject(wordWin);
                             break;
                         case "wordMove":
                             WordMove wordMove = new WordMove(objName,positon);
-                            tile = wordMove;
+                            r.addObject(wordMove);
                             break;
                         case "wordStop":
                             WordStop wordStop = new WordStop(objName,positon);
-                            tile = wordStop;
+                            r.addObject(wordStop);
                             break;
 
                         default:
                             break;  // If the object name doesn't match any known case it does nothing
                     }
                     //End 7: objName chacker to see what Java Class should be initialized and placed
-                    if(tile != null){
-                        r.addObject(tile);
-                    }
                 }
 
             }

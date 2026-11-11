@@ -41,11 +41,10 @@ public class Baba implements ImageTile {
 
     public void move(Direction d) {
         if (d != null) {
-            // Atualiza a direção com base na tecla premida (converte UP para "u", DOWN para "d", etc.)
-            this.direction = d.name().substring(0, 1).toLowerCase();
+            this.direction = d.name().substring(0, 1).toLowerCase(); // Changes direction to UP to u down to d
 
-            // Atualiza a posição somando o vetor correspondente à direção
-            this.position = this.position.plus(d.asVector());
+
+            this.position = this.position.plus(d.asVector()); //Updates position by adding vector value
         }
     }
 

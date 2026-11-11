@@ -39,8 +39,24 @@ public class GameEngine implements Observer {
 
             if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT || k == KeyEvent.VK_UP || k == KeyEvent.VK_DOWN) {
                 Direction d = Direction.directionFor(k);
-                getPlayer().move(d);
-                updateGUI();
+
+                Baba player = getPlayer();
+                Point2D newPos = player.getPosition().plus(d.asVector()); //Gets new position post move
+                boolean isTransposible = true;
+
+                for (ImageTile obj : currentRoom.getObjects()){
+                    if (obj.getPosition().equals(newPos)){ //If where Baba wants to go there is an object
+                        if( obj instanceof Wall){ //If that object is a wall
+                            isTransposible = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isTransposible){
+                    player.move(d);
+                    updateGUI();
+                }
             }
         }
         int t = ImageGUI.getInstance().getTicks();
