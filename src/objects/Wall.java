@@ -1,5 +1,6 @@
 package objects;
 
+import pt.iscte.poo.game.Room;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -22,21 +23,20 @@ public class Wall extends GeneralObject{
 
     @Override
     public String getName() {
-        return super.getName();
-    }
+        return "wall";    }
 
     @Override
     public Point2D getPosition() {
         return super.getPosition();
     }
 
-    @Override
-    public int getLayer() {
-        return super.getLayer();
-    }
 
     @Override
     public void move(Direction direction) {
         //Empty as the wall is a static object
+    }
+
+    public boolean isIntransposible(){
+        return true;
     }
 }

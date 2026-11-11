@@ -54,8 +54,8 @@ public class Room {
             //Start 2: reads first line to get map dimensions
             String mapDimension = sc.nextLine();
             String[] parts = mapDimension.split(",");
-            int cols = Integer.parseInt(parts[0]);
-            int rows = Integer.parseInt(parts[1]);
+            int cols = Integer.parseInt(parts[1]);
+            int rows = Integer.parseInt(parts[0]);
             //End 2: reads first line to get map dimensions
 
             //Start 3: Fills Floor with dirt for the whole map dimensions
@@ -77,7 +77,7 @@ public class Room {
                 }
 
                 //Start 5: Char checker to see and determine what is what
-                for(int i = 0 ; i < cols && i < line.length(); i++){
+                for(int i = 0 ; i < line.length(); i++){
                     char c = line.charAt(i); //Checks char exactly at the point at which the for is in
                     Point2D position = new Point2D(i,j);
 
@@ -95,7 +95,7 @@ public class Room {
                             r.addObject(new Grass("Grass", position));
                             break;
                         case ' ':
-                            //Since Dirt will alread be occupying this space this is left empty
+                            //Since Dirt will already be occupying this space this is left empty
                             break;
                         default:
                             throw new IllegalStateException("Unexpected value: " + c);
@@ -129,16 +129,19 @@ public class Room {
                             Baba baba = new Baba(positon);
                             r.player = baba;
                             tile=baba;
-
+                            break;
                         case "rock":
                             Rock rock = new Rock(objName,positon);
                             tile = rock;
+                            break;
                         case "bomb":
                             Bomb bomb = new Bomb(objName, positon);
                             tile = bomb;
+                            break;
                         case "box":
                             Box box = new Box(objName, positon);
                             tile = box;
+                            break;
                         case "flag":
                             Flag flag = new Flag(objName, positon);
                             tile = flag;
@@ -146,18 +149,23 @@ public class Room {
                         case "wordBox":
                             WordBox wordBox = new WordBox(objName,positon);
                             tile = wordBox;
+                            break;
                         case "wordIs":
                             WordIs wordIs = new WordIs(objName,positon);
                             tile = wordIs;
+                            break;
                         case "wordWin":
                             WordWin wordWin = new WordWin(objName,positon);
                             tile = wordWin;
+                            break;
                         case "wordMove":
                             WordMove wordMove = new WordMove(objName,positon);
                             tile = wordMove;
+                            break;
                         case "wordStop":
                             WordStop wordStop = new WordStop(objName,positon);
                             tile = wordStop;
+                            break;
 
                         default:
                             break;  // If the object name doesn't match any known case it does nothing
@@ -176,18 +184,6 @@ public class Room {
            e.printStackTrace();
         }
 
-
-        for (int i = 0; i <= 10; i++) {
-            ImageTile dirt = new Dirt(new Point2D(i, i));
-            r.addObject(dirt);
-            ImageTile dirt2 = new Dirt(new Point2D(10 - i, i));
-            r.addObject(dirt2);
-        }
-
-        Baba baba = new Baba(new Point2D(5, 5));
-        r.addObject(baba);
-
-        r.player = baba;
         return r;
     }
 

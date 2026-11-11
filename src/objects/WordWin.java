@@ -6,4 +6,9 @@ public class WordWin extends GeneralObject{
     public WordWin(String name, Point2D position) {
         super(name, position);
     }
+
+    @Override
+    public String getName() {
+        return "word-win";
+    }
 }

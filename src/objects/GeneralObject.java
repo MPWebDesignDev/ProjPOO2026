@@ -8,6 +8,7 @@ public abstract class GeneralObject implements ImageTile {
 
     private String name;
     private Point2D position;
+    private boolean isIntransposible = true;
 
     public GeneralObject(String name, Point2D position) {
         this.name = name;
@@ -35,7 +36,7 @@ public abstract class GeneralObject implements ImageTile {
 
     @Override
     public int getLayer() {
-        return 0;
+        return 10;
     }
 
     public void move(Direction direction) {

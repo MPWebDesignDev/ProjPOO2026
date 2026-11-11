@@ -9,8 +9,18 @@ public class CrackedWall extends GeneralObject{
     }
 
     @Override
+    public String getName() {
+        return "cracked-wall";
+    }
+
+    @Override
     public void move(Direction direction) {
         //Empty as the CrackedWall is a static object
+    }
+
+    @Override
+    public int getLayer() {
+        return 10;
     }
 
 }

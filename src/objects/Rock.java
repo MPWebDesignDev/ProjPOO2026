@@ -9,6 +9,11 @@ public class Rock extends GeneralObject{
     }
 
     @Override
+    public String getName() {
+        return "rock";
+    }
+
+    @Override
     public void move(Direction direction) {
         Point2D currentPosition = getPosition(); //Gets current position of the rock
         Point2D newPosition = currentPosition.plus(direction.asVector()); //Gets (up, down, left ou, right)

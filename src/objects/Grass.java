@@ -10,6 +10,12 @@ public class Grass extends GeneralObject{
     }
 
     @Override
+    public String getName() {
+        return "grass";
+    }
+
+
+    @Override
     public void move(Direction direction) {
         //Empty as the Grass is a cosmetic object
     }

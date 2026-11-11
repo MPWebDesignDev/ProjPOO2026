@@ -11,7 +11,7 @@ public class Bomb extends GeneralObject {
 
     @Override
     public String getName() {
-        return super.getName();
+        return "bomb";
     }
 
     @Override
@@ -21,6 +21,6 @@ public class Bomb extends GeneralObject {
 
     @Override
     public int getLayer() {
-        return super.getLayer();
+        return 10;
     }
 }

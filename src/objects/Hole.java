@@ -8,6 +8,12 @@ public class Hole extends GeneralObject{
         super(name, position);
     }
 
+
+    @Override
+    public String getName() {
+        return "hole";
+    }
+
     @Override
     public void move(Direction direction) {
         //Empty as the Hole is a static object

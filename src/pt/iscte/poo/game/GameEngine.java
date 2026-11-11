@@ -57,7 +57,9 @@ public class GameEngine implements Observer {
     public void updateGUI() {
         if (currentRoom != null) {
             ImageGUI.getInstance().clearImages();
+
             ImageGUI.getInstance().addImages(currentRoom.getObjects());
+
         }
     }
 
@@ -66,17 +68,5 @@ public class GameEngine implements Observer {
         return currentRoom.getPlayer();
     }
 
-
-    public boolean isInstranposible(Direction direction){
-        Point2D nextPosition = getPlayer().getPosition().plus(direction.asVector()); //Coordenada destino
-
-        for(ImageTile obj : currentRoom.getObjects()){
-            if(obj instanceof Wall){ //Se o objeto for uma parede
-                return false; // Bloqueia se houver uma parede na posição de destino
-            }
-        }
-
-        return true;
-    }
 
 }

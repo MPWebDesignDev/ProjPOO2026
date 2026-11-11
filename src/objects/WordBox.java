@@ -6,4 +6,8 @@ public class WordBox extends GeneralObject{
     public WordBox(String name, Point2D position) {
         super(name, position);
     }
+    @Override
+    public String getName() {
+        return "word-box";
+    }
 }
