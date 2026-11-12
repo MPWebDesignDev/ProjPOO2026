@@ -145,23 +145,23 @@ public class Room {
                             r.addObject(flag);
                             break;
                         case "wordBox":
-                            WordBox wordBox = new WordBox(objName,positon);
+                            ImageTile wordBox = new WordBox(objName,positon);
                             r.addObject(wordBox);
                             break;
                         case "wordIs":
-                            WordIs wordIs = new WordIs(objName,positon);
+                            ImageTile wordIs = new WordIs(objName,positon);
                             r.addObject(wordIs);
                             break;
                         case "wordWin":
-                            WordWin wordWin = new WordWin(objName,positon);
+                            ImageTile wordWin = new WordWin(objName,positon);
                             r.addObject(wordWin);
                             break;
                         case "wordMove":
-                            WordMove wordMove = new WordMove(objName,positon);
+                            ImageTile wordMove = new WordMove(objName,positon);
                             r.addObject(wordMove);
                             break;
                         case "wordStop":
-                            WordStop wordStop = new WordStop(objName,positon);
+                            ImageTile wordStop = new WordStop(objName,positon);
                             r.addObject(wordStop);
                             break;
 

@@ -11,4 +11,9 @@ public class WordStop extends GeneralObject{
     public String getName() {
         return "word-stop";
     }
+
+    @Override
+    public int getLayer(){
+        return 11;
+    }
 }

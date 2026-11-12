@@ -15,6 +15,6 @@ public class Box extends GeneralObject{
 
     @Override
     public int getLayer() {
-        return 10;
+        return 11;
     }
 }

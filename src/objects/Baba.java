@@ -27,7 +27,7 @@ public class Baba implements ImageTile {
 
     @Override
     public int getLayer() {
-        return 10;
+        return 25;
     }
 
     public void setPosition(Point2D position) {
@@ -42,8 +42,6 @@ public class Baba implements ImageTile {
     public void move(Direction d) {
         if (d != null) {
             this.direction = d.name().substring(0, 1).toLowerCase(); // Changes direction to UP to u down to d
-
-
             this.position = this.position.plus(d.asVector()); //Updates position by adding vector value
         }
     }

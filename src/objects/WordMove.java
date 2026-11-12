@@ -11,4 +11,10 @@ public class WordMove extends GeneralObject{
     public String getName() {
         return "word-move";
     }
+
+    @Override
+    public int getLayer() {
+        return 11;
+    }
+
 }
