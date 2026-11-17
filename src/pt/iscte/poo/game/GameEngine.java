@@ -45,7 +45,7 @@ public class GameEngine implements Observer {
                 Point2D newPos = player.getPosition().plus(d.asVector()); //Gets new position post move
                 boolean isTransposible = true;
 
-                for (ImageTile obj : currentRoom.getObjects()){
+                for (ImageTile obj : currentRoom.getObjects()){ //VER ONDE COLOCAR ESTE CODIGO!!!!!
                     if (obj.getPosition().equals(newPos)){ //If where Baba wants to go there is an object
                         if( obj instanceof Wall){ //If that object is a wall
                             isTransposible = false;
