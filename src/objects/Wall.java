@@ -29,10 +29,4 @@ public class Wall extends GeneralObject{
         return super.getPosition();
     }
 
-
-    @Override
-    public boolean move(Direction direction) {
-        //Empty as the wall is a static object
-        return false;
-    }
 }

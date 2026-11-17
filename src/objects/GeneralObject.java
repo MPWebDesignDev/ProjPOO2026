@@ -38,7 +38,9 @@ public abstract class GeneralObject implements ImageTile {
     }
 
     public boolean move(Direction direction) {
-        this.position = this.position.plus(direction.asVector()); //Moves object depending on the direction
+        Point2D currentPosition = getPosition(); //Gets current position of the rock
+        Point2D newPosition = currentPosition.plus(direction.asVector()); //Gets (up, down, left ou, right)
+        setPosition(newPosition); //Sets new position of the rock
         return false;
     }
 

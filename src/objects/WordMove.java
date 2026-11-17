@@ -2,7 +2,7 @@ package objects;
 
 import pt.iscte.poo.utils.Point2D;
 
-public class WordMove extends GeneralObject{
+public class WordMove extends WordObject{
     public WordMove(String name, Point2D position) {
         super(name, position);
     }
@@ -16,5 +16,6 @@ public class WordMove extends GeneralObject{
     public int getLayer() {
         return 11;
     }
+
 
 }

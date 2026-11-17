@@ -3,7 +3,14 @@ package objects;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
-public class Bomb extends GeneralObject {
+public class Bomb extends MovableObject implements Pushable {
+
+
+    @Override
+    public boolean canMove(BoxRules rules) {
+        return false;
+    }
+
 
     public Bomb(String name, Point2D point2D) {
         super(name, point2D);

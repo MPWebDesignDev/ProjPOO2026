@@ -6,19 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-
+import objects.WordObject;
 import objects.*;
 import objects.Box;
 import pt.iscte.poo.gui.ImageTile;
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 import javax.swing.*;
+
+import static java.nio.file.Files.move;
 
 public class Room {
 
     private List<ImageTile> objects;
     private String roomName;
     private Baba player;
+    private int cols;
+    private int rows;
 
     public Room() {
         objects = new ArrayList<>();
@@ -40,6 +45,80 @@ public class Room {
         return objects;
     }
 
+    public void playerMove(Direction d) {
+        if (player == null || d == null) {
+            return;
+        }
+
+        Point2D newPosition = player.getPosition().plus(d.asVector());
+        if (!inBounds(newPosition)) {
+            return;
+        }
+
+        BoxRules rule = BoxRules.fromRoom(objects);
+        ImageTile target = objectAt(newPosition);
+
+        // Block entry on walls, STOP boxes, or unmovable/word tiles when blocked or in a corner
+        if (target instanceof Wall || (target instanceof Box && rule == BoxRules.STOP)) {
+            return;
+        }
+
+        if (target instanceof Pushable) {
+            Pushable pushable = (Pushable) target;
+            if (!pushable.canMove(rule)) {
+                if (target instanceof WordObject) {
+                    return;
+                }
+            } else {
+                Point2D beyondPos = newPosition.plus(d.asVector());
+                if (!nextIsEmpty(beyondPos, rule)) {
+                    return;
+                }
+                pushable.move(d);
+            }
+        }
+
+        player.move(d);
+    }
+
+    public boolean nextIsEmpty(Point2D position, BoxRules rule) {
+        if (!inBounds(position)) {
+            return false;
+        }
+
+        for (ImageTile obj : objects) {
+            if (obj.getPosition().equals(position)) {
+                if (obj instanceof Dirt || obj instanceof Grass) {
+                    continue;
+                }
+                if (obj instanceof Wall || obj instanceof Pushable) {
+                    return false;
+                }
+                if (obj instanceof Box && (rule == BoxRules.STOP || rule == BoxRules.MOVE)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean inBounds(Point2D pos) {
+        return pos.getX() >= 0 && pos.getX() < cols && pos.getY() >= 0 && pos.getY() < rows;
+    }
+
+    private ImageTile objectAt(Point2D pos) {
+        for (ImageTile obj : objects) {
+            if (!obj.getPosition().equals(pos)) {
+                continue;
+            }
+            if (obj instanceof Dirt || obj instanceof Grass) {
+                continue;
+            }
+            return obj;
+        }
+        return null;
+    }
+
     public static Room readRoom(File f) {
         Room r = new Room();
         r.setName(f.getName());
@@ -56,6 +135,8 @@ public class Room {
             String[] parts = mapDimension.split(",");
             int cols = Integer.parseInt(parts[1]);
             int rows = Integer.parseInt(parts[0]);
+            r.cols = cols;
+            r.rows = rows;
             //End 2: reads first line to get map dimensions
 
             //Start 3: Fills Floor with dirt for the whole map dimensions
@@ -178,6 +259,8 @@ public class Room {
         catch (FileNotFoundException e) {
            e.printStackTrace();
         }
+
+
 
         return r;
     }

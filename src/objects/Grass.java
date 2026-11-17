@@ -15,9 +15,4 @@ public class Grass extends GeneralObject{
     }
 
 
-    @Override
-    public boolean move(Direction direction) {
-        //Empty as the Grass is a cosmetic object
-        return false;
-    }
 }

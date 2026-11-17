@@ -39,11 +39,16 @@ public class Baba implements ImageTile {
     }
 
 
-    public void move(Direction d) {
+    public void turn(Direction d) {
         if (d != null) {
-            this.direction = d.name().substring(0, 1).toLowerCase(); // Changes direction to UP to u down to d
-            this.position = this.position.plus(d.asVector()); //Updates position by adding vector value
+            this.direction = d.name().substring(0, 1).toLowerCase();
         }
     }
 
+    public void move(Direction d) {
+        if (d != null) {
+            turn(d);
+            this.position = this.position.plus(d.asVector());
+        }
+    }
 }

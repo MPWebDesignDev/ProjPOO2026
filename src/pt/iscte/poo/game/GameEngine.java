@@ -41,30 +41,8 @@ public class GameEngine implements Observer {
             if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT || k == KeyEvent.VK_UP || k == KeyEvent.VK_DOWN) {
                 Direction d = Direction.directionFor(k);
 
-                Baba player = getPlayer();
-                Point2D newPos = player.getPosition().plus(d.asVector()); //Gets new position post move
-                boolean isTransposible = true;
-
-                for (ImageTile obj : currentRoom.getObjects()){ //VER ONDE COLOCAR ESTE CODIGO!!!!!
-                    if (obj.getPosition().equals(newPos)){ //If where Baba wants to go there is an object
-                        if( obj instanceof Wall){ //If that object is a wall
-                            isTransposible = false;
-                            break;
-                        }
-
-                        else if (obj instanceof Box){ //Implementation does not work to be checked
-                            Point2D playerPos = getPlayer().getPosition();
-                            if(obj.getPosition().equals(playerPos)){
-                                ((Box) obj).move(d);
-                            }
-                        }
-                    }
-                }
-
-                if (isTransposible){
-                    player.move(d);
-                    updateGUI();
-                }
+                currentRoom.playerMove(d);
+                updateGUI();
             }
         }
 
@@ -92,6 +70,13 @@ public class GameEngine implements Observer {
 
     public Baba getPlayer() {
         return currentRoom.getPlayer();
+    }
+
+    public void restartLevel() {
+        if (currentRoom != null) {
+            currentRoom = Room.readRoom(new File(ROOMS_DIRECTORY + "/room0.txt"));
+            updateGUI();
+        }
     }
 
 
