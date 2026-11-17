@@ -3,7 +3,7 @@ package objects;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
-public class StaticObject extends GeneralObject implements Movable {
+public class StaticObject extends GeneralObject {
 
     public StaticObject(String name, Point2D position) {
         super(name, position);

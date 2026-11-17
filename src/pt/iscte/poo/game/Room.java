@@ -121,7 +121,7 @@ public class Room {
                     int yPosition = Integer.parseInt(spacer[2]);
                     Point2D positon = new Point2D(xPosition,yPosition); //Tells the engine what exact location the object should be in on the map
 
-                   //Start 7: objName chacker to see what Java Class should be initialized and placed
+                   //Start 7: objName checker to see what Java Class should be initialized and placed
                     switch (objName){
                         case "baba":
                             Baba baba = new Baba(positon);

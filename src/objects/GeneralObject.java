@@ -30,7 +30,6 @@ public abstract class GeneralObject implements ImageTile {
     @Override
     public Point2D getPosition() {
         return position;
-
     }
 
     @Override

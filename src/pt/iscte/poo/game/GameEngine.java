@@ -52,7 +52,7 @@ public class GameEngine implements Observer {
                             break;
                         }
 
-                        else if (obj instanceof Box){
+                        else if (obj instanceof Box){ //Implementation does not work to be checked
                             Point2D playerPos = getPlayer().getPosition();
                             if(obj.getPosition().equals(playerPos)){
                                 ((Box) obj).move(d);
