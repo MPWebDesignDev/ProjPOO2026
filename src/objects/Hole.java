@@ -15,7 +15,8 @@ public class Hole extends GeneralObject{
     }
 
     @Override
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         //Empty as the Hole is a static object
+        return false;
     }
 }

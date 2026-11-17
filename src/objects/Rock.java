@@ -14,10 +14,11 @@ public class Rock extends GeneralObject{
     }
 
     @Override
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         Point2D currentPosition = getPosition(); //Gets current position of the rock
         Point2D newPosition = currentPosition.plus(direction.asVector()); //Gets (up, down, left ou, right)
         setPosition(newPosition); //Sets new position of the rock
+        return false;
     }
 
 

@@ -31,11 +31,8 @@ public class Wall extends GeneralObject{
 
 
     @Override
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         //Empty as the wall is a static object
-    }
-
-    public boolean isTransposible(){
-        return true;
+        return false;
     }
 }

@@ -122,7 +122,7 @@ public class Room {
                     Point2D positon = new Point2D(xPosition,yPosition); //Tells the engine what exact location the object should be in on the map
 
                    //Start 7: objName chacker to see what Java Class should be initialized and placed
-                    switch (objName.toLowerCase()){
+                    switch (objName){
                         case "baba":
                             Baba baba = new Baba(positon);
                             r.player = baba;
@@ -145,28 +145,28 @@ public class Room {
                             r.addObject(flag);
                             break;
                         case "wordBox":
-                            ImageTile wordBox = new WordBox(objName,positon);
+                            WordBox wordBox = new WordBox(objName,positon);
                             r.addObject(wordBox);
                             break;
                         case "wordIs":
-                            ImageTile wordIs = new WordIs(objName,positon);
+                            WordIs wordIs = new WordIs(objName,positon);
                             r.addObject(wordIs);
                             break;
                         case "wordWin":
-                            ImageTile wordWin = new WordWin(objName,positon);
+                            WordWin wordWin = new WordWin(objName,positon);
                             r.addObject(wordWin);
                             break;
                         case "wordMove":
-                            ImageTile wordMove = new WordMove(objName,positon);
+                            WordMove wordMove = new WordMove(objName,positon);
                             r.addObject(wordMove);
                             break;
                         case "wordStop":
-                            ImageTile wordStop = new WordStop(objName,positon);
+                            WordStop wordStop = new WordStop(objName,positon);
                             r.addObject(wordStop);
                             break;
 
                         default:
-                            break;  // If the object name doesn't match any known case it does nothing
+                           throw new IllegalArgumentException(""); // If the object name doesn't match any known case it does nothing
                     }
                     //End 7: objName chacker to see what Java Class should be initialized and placed
                 }

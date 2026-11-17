@@ -38,8 +38,9 @@ public abstract class GeneralObject implements ImageTile {
         return 10;
     }
 
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         this.position = this.position.plus(direction.asVector()); //Moves object depending on the direction
+        return false;
     }
 
 }

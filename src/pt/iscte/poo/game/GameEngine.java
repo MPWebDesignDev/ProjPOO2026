@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 import objects.Baba;
+import objects.Box;
 import objects.GeneralObject;
 import objects.Wall;
 import pt.iscte.poo.gui.ImageGUI;
@@ -50,6 +51,13 @@ public class GameEngine implements Observer {
                             isTransposible = false;
                             break;
                         }
+
+                        else if (obj instanceof Box){
+                            Point2D playerPos = getPlayer().getPosition();
+                            if(obj.getPosition().equals(playerPos)){
+                                ((Box) obj).move(d);
+                            }
+                        }
                     }
                 }
 
@@ -59,6 +67,8 @@ public class GameEngine implements Observer {
                 }
             }
         }
+
+
         int t = ImageGUI.getInstance().getTicks();
         while (lastTickProcessed < t) {
             processTick();

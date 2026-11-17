@@ -14,8 +14,9 @@ public class CrackedWall extends GeneralObject{
     }
 
     @Override
-    public void move(Direction direction) {
+    public boolean move(Direction direction) {
         //Empty as the CrackedWall is a static object
+        return false;
     }
 
     @Override
