@@ -50,6 +50,8 @@ public class Room {
             return;
         }
 
+        player.turn(d);
+
         Point2D newPosition = player.getPosition().plus(d.asVector());
         if (!inBounds(newPosition)) {
             return;
@@ -103,6 +105,9 @@ public class Room {
     }
 
     private boolean inBounds(Point2D pos) {
+        if (pos == null) {
+            return false;
+        }
         return pos.getX() >= 0 && pos.getX() < cols && pos.getY() >= 0 && pos.getY() < rows;
     }
 
@@ -131,10 +136,10 @@ public class Room {
             }
 
             //Start 2: reads first line to get map dimensions
-            String mapDimension = sc.nextLine();
+            String mapDimension = sc.nextLine().trim();
             String[] parts = mapDimension.split(",");
-            int cols = Integer.parseInt(parts[1]);
-            int rows = Integer.parseInt(parts[0]);
+            int cols = Integer.parseInt(parts[1].trim());
+            int rows = Integer.parseInt(parts[0].trim());
             r.cols = cols;
             r.rows = rows;
             //End 2: reads first line to get map dimensions
@@ -149,9 +154,10 @@ public class Room {
 
             //Start 4: Row reader that determines what object goes where dependent on what is written in map file
             int j = 0;
-            while(sc.hasNextLine()){
+            while(j < rows && sc.hasNextLine()){
 
-                String line = sc.nextLine().trim();
+                String rawLine = sc.nextLine().replace("\r", "");
+                String line = rawLine.trim();
 
                 if(line.contains(",") || line.isEmpty()){
                     break;
