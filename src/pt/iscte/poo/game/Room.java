@@ -108,7 +108,7 @@ public class Room {
         if (pos == null) {
             return false;
         }
-        return pos.getX() >= 0 && pos.getX() < cols && pos.getY() >= 0 && pos.getY() < rows;
+        return pos.getX() >= 0 || pos.getX() < cols || pos.getY() >= 0 || pos.getY() < rows;
     }
 
     private ImageTile objectAt(Point2D pos) {
