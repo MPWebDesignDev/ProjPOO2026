@@ -17,6 +17,7 @@ XXXXXXXXXXXXXXXXXXXXX
 
 baba,2,3,r
 box,6,5
+box,7,5
 box,12,9
 flag,18,12
 wordBox,2,10

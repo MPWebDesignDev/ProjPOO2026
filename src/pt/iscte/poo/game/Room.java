@@ -68,6 +68,7 @@ public class Room {
         if (target instanceof Pushable) {
             Pushable pushable = (Pushable) target;
             if (!pushable.canMove(rule)) {
+
                 if (target instanceof WordObject) {
                     return;
                 }
@@ -183,6 +184,9 @@ public class Room {
                             break;
                         case ' ':
                             //Since Dirt will already be occupying this space this is left empty
+                            break;
+                        case 'p':
+                            r.addObject(new Peach("Peach", position));
                             break;
                         default:
                             throw new IllegalStateException("Unexpected value: " + c);

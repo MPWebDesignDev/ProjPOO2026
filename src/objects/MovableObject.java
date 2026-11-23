@@ -9,11 +9,17 @@ public abstract class MovableObject extends GeneralObject implements Pushable{
         super(name, position);
     }
 
+    @Override
     public boolean move(Direction direction) {
-        Point2D currentPosition = getPosition(); //Gets current position of the rock
-        Point2D newPosition = currentPosition.plus(direction.asVector()); //Gets (up, down, left ou, right)
-        setPosition(newPosition); //Sets new position of the rock
-        return false;
+        if (direction == null) {
+            return false;
+        }
+        Point2D currentPosition = getPosition();
+        Point2D newPosition = currentPosition.plus(direction.asVector());
+        setPosition(newPosition);
+        return true;
     }
+
+
 
 }

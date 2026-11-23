@@ -36,7 +36,14 @@ public class GameEngine implements Observer {
     public void update(Observed source) {
 
         if (ImageGUI.getInstance().wasKeyPressed()) {
+
+
             int k = ImageGUI.getInstance().keyPressed();
+
+            if (k == KeyEvent.VK_R) {
+                restartLevel();
+                return;
+            }
 
             if (k == KeyEvent.VK_LEFT || k == KeyEvent.VK_RIGHT || k == KeyEvent.VK_UP || k == KeyEvent.VK_DOWN) {
                 Direction d = Direction.directionFor(k);
@@ -74,9 +81,15 @@ public class GameEngine implements Observer {
 
     public void restartLevel() {
         if (currentRoom != null) {
-            currentRoom = Room.readRoom(new File(ROOMS_DIRECTORY + "/room0.txt"));
+            currentRoom = Room.readRoom(new File(ROOMS_DIRECTORY + "/room1.txt"));
             updateGUI();
+        } else if (currentRoom != null) {
+            currentRoom = Room.readRoom(new File(ROOMS_DIRECTORY + "/room1.txt"));
+            updateGUI();
+            ImageGUI.getInstance().update();
         }
+
+
     }
 
 

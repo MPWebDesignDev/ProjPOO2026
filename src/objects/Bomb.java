@@ -3,12 +3,12 @@ package objects;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
-public class Bomb extends MovableObject implements Pushable {
+public class Bomb extends MovableObject{
 
 
     @Override
     public boolean canMove(BoxRules rules) {
-        return false;
+        return true;
     }
 
 

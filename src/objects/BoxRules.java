@@ -8,47 +8,50 @@ import pt.iscte.poo.utils.Point2D;
 
 public enum BoxRules {
 
-    DEFAULT, WIN, MOVE, STOP;
+    DEFAULT, WIN, MOVE, STOP; //Possible conditions for the enum
 
-    private static final Direction[] DIRS = { Direction.RIGHT, Direction.DOWN };
+    private static final Direction[] DIRS = { Direction.RIGHT, Direction.DOWN }; //Keeps frase logic intact
 
     private static boolean hasWord(List<ImageTile> objects, Point2D pos, Class<? extends WordObject> type) {
         if (objects == null || pos == null) {
             return false;
         }
-        for (ImageTile obj : objects) {
-            if (obj != null && type.isInstance(obj) && pos.equals(obj.getPosition())) {
+        for (ImageTile obj : objects) { //Goes over all the existing objects
+            if (obj != null && type.isInstance(obj) && pos.equals(obj.getPosition())) { //
                 return true;
             }
         }
         return false;
     }
 
-    public static BoxRules fromRoom(List<ImageTile> objs) {
-        if (objs == null) {
+    public static BoxRules fromRoom(List<ImageTile> objects) {
+        if (objects == null) { //Base case for no objects
             return DEFAULT;
         }
 
         boolean win = false;
         boolean move = false;
-        boolean stop = false;
+        boolean stop = false; //All conditions starts as false until the sentence is made
 
-        for (ImageTile obj : objs) {
+        for (ImageTile obj : objects) {
             if (!(obj instanceof WordBox)) {
                 continue;
             }
-            Point2D pos = obj.getPosition();
-            for (Direction d : DIRS) {
-                Point2D isPos = pos.plus(d.asVector());
-                Point2D propPos = isPos.plus(d.asVector());
-                if (hasWord(objs, isPos, WordIs.class)) {
-                    if (hasWord(objs, propPos, WordWin.class)) {
+
+            Point2D pos = obj.getPosition(); //Gets objects position
+
+            for (Direction d : DIRS) { //Checks for logic behind the formed phrase
+                Point2D isPos = pos.plus(d.asVector()); //Checks if is is next in line
+                Point2D propPos = isPos.plus(d.asVector()); //Checks if proposition is nect in line
+
+                if (hasWord(objects, isPos, WordIs.class)) { //Checks only if IS is present
+                    if (hasWord(objects, propPos, WordWin.class)) {
                         win = true;
                     }
-                    if (hasWord(objs, propPos, WordMove.class)) {
+                    if (hasWord(objects, propPos, WordMove.class)) {
                         move = true;
                     }
-                    if (hasWord(objs, propPos, WordStop.class)) {
+                    if (hasWord(objects, propPos, WordStop.class)) {
                         stop = true;
                     }
                 }
